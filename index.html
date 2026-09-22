@@ -1,173 +1,705 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASANA - Mitigasi Bencana Anak-Anak</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- ================= CSS CSS / STYLES ================= -->
+  <style>
+    :root {
+      --bg-orange: #f89e35;
+      --bg-orange-light: #ffb156;
+      --card-bg: #ffffff;
+      --card-inner: #fff7eb;
+      --text-dark: #1e1e1e;
+      --text-muted: #555555;
+      --border-dark: #1e1e1e;
+      --btn-yellow: #f1c40f;
+      --btn-orange: #e67e22;
+      --shadow-color: rgba(30, 30, 30, 1);
+    }
 
-    <link rel="stylesheet" href="style.css" />
-    <title>JedX Learning Platform</title>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      outline: none;
+      border: none;
+      text-decoration: none;
+    }
 
-    <!-- Icon Library -->
-    <script src="https://unpkg.com/feather-icons"></script>
-  </head>
-  <body>
-    <!-- Navbar Start-->
-    <nav class="navbar">
-      <a href="#" class="logo-navbar">Jed<span>X</span></a>
-      <div class="navbar-nav">
-        <a href="#home">Beranda</a>
-        <a href="#about">Tentang</a>
-        <a href="#course">Kelas</a>
-        <a href="#contact">Kontak</a>
-      </div>
+    html {
+      scroll-behavior: smooth;
+    }
 
-      <div class="navbar-extra">
-        <a href="#" id="search"><i data-feather="search"></i></a>
-        <a id="hamburger-menu" href="#"><i data-feather="menu"></i></a>
-      </div>
-    </nav>
-    <!-- Navbar End -->
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-orange);
+      color: var(--text-dark);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
 
-    <!-- Hero Section Start -->
-    <section class="hero" id="home">
-      <main class="content">
-        <h1>Belajar Lebih Mudah, <br><span>Tumbuh Lebih Cepat</span></h1>
-        <p>Platform pembelajaran interaktif yang membantumu menguasai keahlian baru dan mencapai potensi terbaikmu di era digital.</p>
-        <a href="#course" class="cta">Mulai Belajar</a>
-      </main>
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-orange);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--text-dark);
+      border-radius: 5px;
+    }
 
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students Learning" />
-      </div>
-    </section>
-    <!-- Hero Section End -->
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 7%;
+      background-color: var(--card-bg);
+      border-bottom: 4px solid var(--border-dark);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
 
-    <!-- About Section Start -->
-    <section class="about" id="about">
-      <h2>Tentang <span>Kami</span></h2>
-      <div class="row">
-        <div class="about-img">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tentang JedX" />
+    .navbar .logo-navbar {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+    }
+
+    .navbar .logo-navbar span {
+      color: var(--bg-orange);
+    }
+
+    .navbar .navbar-nav a {
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      margin: 0 1rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .navbar .navbar-nav a:hover {
+      color: var(--bg-orange);
+    }
+
+    .btn-nav {
+      background-color: var(--btn-yellow);
+      color: var(--text-dark);
+      padding: 0.6rem 1.4rem;
+      border: 3px solid var(--border-dark);
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      transition: all 0.2s;
+    }
+
+    .btn-nav:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--border-dark);
+    }
+
+    #hamburger-menu {
+      display: none;
+      color: var(--text-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding: 9rem 7% 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .hero-mascot {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mascot-img {
+      width: 100%;
+      max-width: 320px;
+      filter: drop-shadow(5px 5px 0px var(--border-dark));
+    }
+
+    .speech-bubble {
+      background: white;
+      border: 3px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      box-shadow: 4px 4px 0px var(--border-dark);
+      position: relative;
+    }
+
+    .speech-bubble p {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .title-main {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 4px 4px 0px var(--border-dark), -2px -2px 0px var(--border-dark);
+      line-height: 1;
+    }
+
+    .badge-title {
+      display: inline-block;
+      background-color: var(--border-dark);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 1rem 0 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 2px dashed var(--border-dark);
+    }
+
+    .hero-btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      background-color: var(--card-bg);
+      color: var(--text-dark);
+      padding: 1rem 2rem;
+      border: 3px solid var(--border-dark);
+      border-radius: 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 5px 5px 0px var(--border-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-secondary {
+      background-color: var(--btn-yellow);
+      color: var(--text-dark);
+      padding: 1rem 1.8rem;
+      border: 3px solid var(--border-dark);
+      border-radius: 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 5px 5px 0px var(--border-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    /* Section Container */
+    .section-container {
+      padding: 5rem 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 3px 3px 0px var(--border-dark);
+    }
+
+    .section-title p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card-materi {
+      background-color: var(--card-bg);
+      border: 4px solid var(--border-dark);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 6px 6px 0px var(--border-dark);
+      position: relative;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-materi:hover {
+      transform: translateY(-8px);
+      box-shadow: 8px 12px 0px var(--border-dark);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--btn-yellow);
+      border: 2px solid var(--border-dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .card-materi img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 4px solid var(--border-dark);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-dark);
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-card {
+      margin-top: auto;
+      text-align: center;
+      background-color: var(--bg-orange-light);
+      color: var(--text-dark);
+      padding: 0.8rem;
+      border: 3px solid var(--border-dark);
+      border-radius: 14px;
+      font-weight: 700;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      transition: all 0.2s;
+    }
+
+    .btn-card:hover {
+      background-color: var(--btn-yellow);
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--border-dark);
+    }
+
+    /* Quiz Section */
+    .quiz-section {
+      background: var(--bg-orange-light);
+      border-top: 4px solid var(--border-dark);
+      border-bottom: 4px solid var(--border-dark);
+    }
+
+    .quiz-box {
+      background: white;
+      border: 4px solid var(--border-dark);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 8px 8px 0px var(--border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .quiz-info h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .lives-container {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+
+    .preview-card {
+      background: var(--card-inner);
+      border: 3px solid var(--border-dark);
+      padding: 2rem;
+      border-radius: 18px;
+      box-shadow: 4px 4px 0px var(--border-dark);
+      text-align: center;
+    }
+
+    .score-display {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      background: white;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--border-dark);
+      border-radius: 12px;
+    }
+
+    /* About Us Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-card {
+      background: white;
+      border: 4px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 6px 6px 0px var(--border-dark);
+      transition: 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .avatar-box {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.2rem;
+      background: var(--card-inner);
+      border: 3px solid var(--border-dark);
+      border-radius: 50%;
+      padding: 0.5rem;
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .team-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .role-badge {
+      display: inline-block;
+      background: var(--bg-orange-light);
+      border: 2px solid var(--border-dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      background: white;
+      border-top: 4px solid var(--border-dark);
+      text-align: center;
+      padding: 3rem 7% 1.5rem;
+    }
+
+    .footer-content h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+    }
+
+    .footer-content h2 span {
+      color: var(--bg-orange);
+    }
+
+    .credit {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 2px dashed var(--border-dark);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-btn-group {
+        justify-content: center;
+      }
+      .quiz-box {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #hamburger-menu {
+        display: block;
+      }
+      .btn-nav {
+        display: none;
+      }
+      .navbar .navbar-nav {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: white;
+        border-left: 4px solid var(--border-dark);
+        border-bottom: 4px solid var(--border-dark);
+        width: 16rem;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        transition: 0.3s ease;
+      }
+      .navbar .navbar-nav.active {
+        right: 0;
+      }
+      .navbar .navbar-nav a {
+        margin: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Start -->
+  <nav class="navbar">
+    <a href="#" class="logo-navbar">ASANA<span>.</span></a>
+    <div class="navbar-nav">
+      <a href="#home">Beranda</a>
+      <a href="#bahan-ajar">Bahan Ajar</a>
+      <a href="#quiz">Quiz & Game</a>
+      <a href="#about">About Us</a>
+    </div>
+    <div class="navbar-extra">
+      <a href="#bahan-ajar" class="btn-nav">Mulai Belajar</a>
+      <a id="hamburger-menu" href="#"><i data-feather="menu"></i></a>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Hero Section Start -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-mascot">
+        <img src="https://cdn-icons-png.flaticon.com/512/4825/4825112.png" alt="Maskot BUMA ASANA" class="mascot-img" />
+        <div class="speech-bubble">
+          <p>Halo teman ASANA! Perkenalkan aku <strong>BUMA</strong> 🌍</p>
         </div>
-        <div class="content">
-          <h3>Kenapa memilih JedX Learning Platform?</h3>
-          <p>
-            JedX Learning Platform dirancang untuk membantumu belajar dengan lebih mudah, fleksibel, dan terarah. Kami menyediakan mentor berpengalaman dan kurikulum yang disesuaikan dengan kebutuhan industri masa kini.
-          </p>
-          <p>
-            Dengan pengalaman belajar yang sederhana dan dukungan komunitas, JedX hadir untuk menemani setiap langkahmu dalam berkembang.
-          </p>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="title-main">ASANA</h1>
+        <div class="badge-title">MITIGASI BENCANA ANAK-ANAK</div>
+        <p>Mari belajar cara menyelamatkan diri dan menghadapi bencana alam bersama BUMA dengan cara yang seru dan interaktif!</p>
+        <div class="hero-btn-group">
+          <a href="#bahan-ajar" class="btn-primary">MULAI BELAJAR <i data-feather="play-circle"></i></a>
+          <a href="#quiz" class="btn-secondary">MAIN GAME <i data-feather="gamepad"></i></a>
         </div>
       </div>
-    </section>
-    <!-- About Section End -->
+    </div>
+  </section>
+  <!-- Hero Section End -->
 
-    <!-- Course Section Start -->
-    <section class="course" id="course">
-      <h2>Kelas <span>Terpopuler</span></h2>
-      <p>Pilih kelas yang sesuai dengan minatmu dan kembangkan keterampilanmu bersama mentor profesional.</p>
+  <!-- Bahan Ajar Section Start -->
+  <section class="section-container" id="bahan-ajar">
+    <div class="section-title">
+      <h2>BAHAN AJAR</h2>
+      <p>Pilih materi bencana alam yang ingin kamu pelajari hari ini:</p>
+    </div>
 
-      <div class="row" id="course-list">
-        <div class="menu-card">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Web Development" />
-          <div class="menu-card-content">
-            <span>Programming</span>
-            <strong>Fullstack Web Developer</strong>
-            <p>Pelajari cara membuat website dari nol menggunakan HTML, CSS, JavaScript, hingga React dan Node.js.</p>
-            <small>Durasi: 3 Bulan</small>
-            <a href="#">Daftar Kelas</a>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="UI/UX Design" />
-          <div class="menu-card-content">
-            <span>Design</span>
-            <strong>UI/UX Design Mastery</strong>
-            <p>Kuasai Figma dan prinsip desain untuk menciptakan antarmuka aplikasi yang indah dan user-friendly.</p>
-            <small>Durasi: 2 Bulan</small>
-            <a href="#">Daftar Kelas</a>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Data Science" />
-          <div class="menu-card-content">
-            <span>Data</span>
-            <strong>Data Science & AI</strong>
-            <p>Pahami dasar-dasar Python, analisis data, dan machine learning untuk karir masa depan.</p>
-            <small>Durasi: 4 Bulan</small>
-            <a href="#">Daftar Kelas</a>
-          </div>
+    <div class="cards-grid">
+      <!-- Card 1: Banjir -->
+      <div class="card-materi">
+        <div class="card-badge">Materi 1</div>
+        <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Materi Banjir" />
+        <div class="card-content">
+          <h3>MATERI BANJIR</h3>
+          <p>Kenapa banjir bisa terjadi dan apa yang harus kamu lakukan saat air mulai naik?</p>
+          <a href="#" class="btn-card" onclick="alert('Materi Banjir dibuka!')">Pelajari Materi</a>
         </div>
       </div>
-    </section>
-    <!-- Course Section End -->
 
-    <!-- Contact Section Start -->
-    <section id="contact" class="contact">
-      <h2>Hubungi <span>Kami</span></h2>
-      <p>Punya pertanyaan atau ingin berkonsultasi? Jangan ragu untuk mengirimkan pesan kepada kami.</p>
-
-      <div class="row">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.585720336962!2d107.7222779402832!3d-6.940013493088898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c323777ca3a1%3A0x355eff6734ed9167!2sUniversitas%20Pendidikan%20Indonesia%20-%20Kampus%20UPI%20Cibiru!5e0!3m2!1sen!2sid!4v1787874858376!5m2!1sen!2sid"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          class="map"
-        ></iframe>
-
-        <form action="">
-          <div class="input-group">
-            <i data-feather="user"></i>
-            <input type="text" placeholder="Nama Lengkap" />
-          </div>
-          <div class="input-group">
-            <i data-feather="mail"></i>
-            <input type="email" placeholder="Alamat Email" />
-          </div>
-          <div class="input-group">
-            <i data-feather="phone"></i>
-            <input type="number" placeholder="Nomor WhatsApp" />
-          </div>
-          <button type="submit" class="btn">Kirim Pesan</button>
-        </form>
+      <!-- Card 2: Gempa Bumi -->
+      <div class="card-materi">
+        <div class="card-badge">Materi 2</div>
+        <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Materi Gempa Bumi" />
+        <div class="card-content">
+          <h3>MATERI GEMPA BUMI</h3>
+          <p>Langkah lindungi kepala, berlindung di bawah meja, dan evakuasi diri saat gempa terjadi.</p>
+          <a href="#" class="btn-card" onclick="alert('Materi Gempa Bumi dibuka!')">Pelajari Materi</a>
+        </div>
       </div>
-    </section>
-    <!-- Contact Section End -->
 
-    <!-- Footer Section Start-->
-    <footer id="footer">
-      <div class="socials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="twitter"></i></a>
-        <a href="#"><i data-feather="linkedin"></i></a>
+      <!-- Card 3: Kebakaran -->
+      <div class="card-materi">
+        <div class="card-badge">Materi 3</div>
+        <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Materi Kebakaran" />
+        <div class="card-content">
+          <h3>MATERI KEBAKARAN</h3>
+          <p>Cara merayap di bawah asap tebal dan langkah aman menyelamatkan diri dari api.</p>
+          <a href="#" class="btn-card" onclick="alert('Materi Kebakaran dibuka!')">Pelajari Materi</a>
+        </div>
       </div>
-      <div class="links">
-        <a href="#home">Beranda</a>
-        <a href="#about">Tentang</a>
-        <a href="#course">Kelas</a>
-        <a href="#contact">Kontak</a>
-      </div>
-      <div class="credit">
-        <p>Created by <a href="#">Mochamad Irfan Hidayat</a> | &copy; 2026 JedX</p>
-      </div>
-    </footer>
-    <!-- Footer Section End-->
+    </div>
+  </section>
+  <!-- Bahan Ajar Section End -->
 
-    <script>
-      feather.replace();
-      const navbarNav = document.querySelector('.navbar-nav');
-      document.querySelector('#hamburger-menu').onclick = (e) => {
+  <!-- Quiz & Mini Game Section Start -->
+  <section class="section-container quiz-section" id="quiz">
+    <div class="quiz-box">
+      <div class="quiz-info">
+        <h2>AYO UJI PENGETAHUANMU! 🎮</h2>
+        <p>Bantu BUMA menyelesaikan misi kebersihan dan dapatkan 3 Bintang!</p>
+        <div class="lives-container">
+          <span>Nyawa Kamu:</span>
+          <span class="hearts">❤️❤️❤️</span>
+        </div>
+        <button class="btn-primary btn-game" onclick="alert('Permainan Simulasi dimulai!')">MULAI GAME SIMULASI</button>
+      </div>
+      <div class="quiz-preview">
+        <div class="preview-card">
+          <p class="mission-text">Misi #1: Clean up dirty river</p>
+          <div class="score-display">Score: 10/10 ⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Quiz & Mini Game Section End -->
+
+  <!-- About Us Section Start -->
+  <section class="section-container" id="about">
+    <div class="section-title">
+      <h2>ABOUT US</h2>
+      <p>Tim Pengembang Aplikasi Edukasi Mitigasi Bencana ASANA</p>
+    </div>
+
+    <div class="team-grid">
+      <!-- Member 1 -->
+      <div class="team-card">
+        <div class="avatar-box">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Ivan" alt="Ivan" />
+        </div>
+        <h3>Ivan</h3>
+        <span class="role-badge">Sebagai Designer</span>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="team-card">
+        <div class="avatar-box">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Dafa" alt="Dafa" />
+        </div>
+        <h3>Dafa</h3>
+        <span class="role-badge">Sebagai Designer</span>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="team-card">
+        <div class="avatar-box">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Dika" alt="Dika" />
+        </div>
+        <h3>Dika</h3>
+        <span class="role-badge">Sebagai Programmer</span>
+      </div>
+    </div>
+  </section>
+  <!-- About Us Section End -->
+
+  <!-- Footer Start -->
+  <footer>
+    <div class="footer-content">
+      <h2>ASANA<span>.</span></h2>
+      <p>Mitigasi Bencana Anak-Anak - Belajar Aman, Tanggap Bencana!</p>
+    </div>
+    <div class="credit">
+      <p>&copy; 2026 ASANA Team. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- Footer End -->
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Load Ikon Feather
+    feather.replace();
+
+    // Responsive Hamburger Menu
+    const navbarNav = document.querySelector('.navbar-nav');
+    const hamburger = document.querySelector('#hamburger-menu');
+
+    if (hamburger) {
+      hamburger.onclick = (e) => {
         e.preventDefault();
         navbarNav.classList.toggle('active');
       };
-    </script>
-  </body>
+    }
+
+    // Klik di luar menu untuk menutup navbar mobile
+    document.addEventListener('click', function (e) {
+      if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+        navbarNav.classList.remove('active');
+      }
+    });
+  </script>
+</body>
 </html>
