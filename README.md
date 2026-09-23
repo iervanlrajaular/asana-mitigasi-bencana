@@ -1,3 +1,3 @@
-Nama: Rhafy Afa Dena Athallah
-NIM: 2405619
-Kelas: 5A
+Nama: Irvan Rizqi Lase
+NIM: 2406211
+Kelas: 5B
